@@ -1,0 +1,30 @@
+ type Cliente {
+        id: ID
+        nombre: String
+        apellidos: String
+        email: String
+        job: String
+        project: String
+        
+    }
+
+    type Query {
+        getCliente(id:ID):Cliente
+    }
+
+
+    input Clienteinput {
+        id: ID
+        nombre: String!
+        apellidos: String!
+        email: String!
+        job: String
+        project: String
+    }
+
+    type Mutation {
+        #Nombre del Resolver, Input con Datos, Valor que retorna.
+        crearCliente(input:Clienteinput) : Cliente
+    }
+
+    
