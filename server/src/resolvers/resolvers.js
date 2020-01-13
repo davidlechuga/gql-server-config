@@ -1,14 +1,23 @@
 import mongoose from 'mongoose';
 import { Clientes } from '../lib/db';
+import { rejects } from 'assert';
 
 
 // son los mismos resolver que exportamos, pero YA CON sintaxis de "GRAPHQL-TOOLS"
 export const resolvers = {
     Query: {
 
-        getCliente: ({ id }) => {
-            return new Cliente(id, clienteDB[id]);
-            
+        getCliente: (root, { id }) => {
+            return new Promise((resolve, reject) => {
+                Clientes.findById(id, (error, cliente) => {
+                    if (error) rejects(error)
+                    else resolve(cliente)
+                });
+            });     
+        },
+
+        getClientes: (root, { limite }) => {
+            return  Clientes.find({}).limit(limite)
         },
         
     },

@@ -9,6 +9,7 @@
     }
 
     type Query {
+        getClientes(limite:Int): [Cliente]
         getCliente(id:ID):Cliente
     }
 
