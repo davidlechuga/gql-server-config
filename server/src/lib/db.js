@@ -1,8 +1,11 @@
 import mongoose, { mongo } from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://lakmi:david2001@lakmicontact-arnoh.mongodb.net/test', { useNewUrlParser: true , useUnifiedTopology: true });
+
+mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true , useUnifiedTopology: true });
 
 
 const clientesSchema = new mongoose.Schema({
