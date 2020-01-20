@@ -4,7 +4,12 @@ dotenv.config();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGOLAB_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+	useCreateIndex: true
+});
 
 const clientesSchema = new mongoose.Schema({
 	nombre: String,
